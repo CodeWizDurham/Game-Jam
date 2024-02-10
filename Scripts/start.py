@@ -4,6 +4,7 @@ import menu
 
 pygame.init()
 
+#load images
 water = pygame.image.load("Assets/water.png")
 water = pygame.transform.scale(water, (400, 400))
 ship = pygame.image.load("Assets/ship.png")
@@ -14,28 +15,33 @@ isle = pygame.image.load("Assets/island.png")
 isle = pygame.transform.scale(isle, (200, 200))
 effect = pygame.image.load("Assets/explode.png")
 
+#set a few values
 run = False
 shipX = 300
 effectSize = 5
 
+#end functions
 def end():
     font = pygame.font.SysFont("Sans", 20)
     text = font.render("Starting game, get ready to play.", 1, (255, 255, 255), (0, 0, 0))
     screen.blit(text, (0, 100))
     pygame.display.update()
     time.sleep(2)
-    
+   
+#menu 
 playing = menu.mainMenu()
 if playing:
     run = True
 else:
     pygame.quit()
 
+#setup
 screen = pygame.display.set_mode((400, 300))
 pygame.display.set_caption("Shipwwrecked - Begining")
 pygame.display.set_icon(ship)
 clock = pygame.time.Clock()
 
+#main loop
 while run:
     clock.tick(30)
     for event in pygame.event.get():
@@ -48,12 +54,14 @@ while run:
         screen.blit(ship, (shipX, 130))
         screen.blit(rock, (0, 100))
     elif shipX <= 100:
+        #end game
         screen.blit(isle, (200, 50))
         pygame.display.update()
         time.sleep(1)
         end()
         run = False
     elif shipX <= 139:
+        #explode the boat
         ship = pygame.transform.rotate(ship, 0.1)
         screen.blit(ship, (shipX, 130))
         effect = pygame.image.load("Assets/explode.png")
