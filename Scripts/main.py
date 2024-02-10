@@ -1,5 +1,6 @@
 import pygame
 import random
+import PygE
 
 screen = pygame.display.set_mode((900, 600))
 screen.fill("gray")
@@ -31,8 +32,11 @@ def main():
         screen.fill("gray")
         player_rect = pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50)
         pygame.draw.rect(screen, "blue", player_rect, border_radius=20)
+        E_Button = PygE.image(["Assests", "E.png"], 0, (30, 30), pygame.Rect(0, 0, 50, 50))
         for i in range(0, 3, 1):
             pygame.draw.rect(screen, (0, 150, 0), trees[i])
+        if player_rect.colliderect(trees[0]):
+            screen.blit(E_Button, pygame.Rect(trees[0].x, trees[0].y), 50, 50)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit() 
