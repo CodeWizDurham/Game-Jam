@@ -1,6 +1,7 @@
 import pygame
 import random
 import PygE
+import start
 
 screen = pygame.display.set_mode((900, 600))
 screen.fill("gray")
@@ -32,18 +33,25 @@ def main():
         screen.fill("gray")
         player_rect = pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50)
         pygame.draw.rect(screen, "blue", player_rect, border_radius=20)
-        E_Button = PygE.image(["Assests", "E.png"], 0, (30, 30), pygame.Rect(0, 0, 50, 50))
+        E_Button = PygE.image(["Assets", "E.png"], 0, (30, 30), pygame.Rect(0, 0, 50, 50))
         for i in range(0, 3, 1):
             pygame.draw.rect(screen, (0, 150, 0), trees[i])
         if player_rect.colliderect(trees[0]):
-            screen.blit(E_Button, pygame.Rect(trees[0].x, trees[0].y), 50, 50)
+            screen.blit(E_Button.image, (trees[0].x + 12, trees[0].y + 12))
+            first_active = True
+        if player_rect.colliderect(trees[1]):
+            screen.blit(E_Button.image, (trees[1].x + 12, trees[1].y + 12))
+            second_active = True
+        if player_rect.colliderect(trees[2]):
+            screen.blit(E_Button.image, (trees[2].x + 12, trees[2].y + 12))
+            third_active = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit() 
         key = pygame.key.get_pressed()
         if key[pygame.K_w]:
             y -= 0.1
-        if key[pygame.K_e]:
+        if key[pygame.K_q]:
             player.inventory.open()
         if key[pygame.K_a]:
             x -= 0.1
