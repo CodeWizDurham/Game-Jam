@@ -20,7 +20,7 @@ effectSize = 5
 
 def end():
     font = pygame.font.SysFont("Sans", 20)
-    text = font.render("The game is not here yet, sorry.", 1, (255, 255, 255), (0, 0, 0))
+    text = font.render("Starting game, get ready to play.", 1, (255, 255, 255), (0, 0, 0))
     screen.blit(text, (0, 100))
     pygame.display.update()
     time.sleep(2)
