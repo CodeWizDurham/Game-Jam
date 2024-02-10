@@ -37,16 +37,16 @@ def main():
             if event.type == pygame.QUIT:
                 quit() 
         key = pygame.key.get_pressed()
+        if key[pygame.K_w]:
+            y -= 0.1
         if key[pygame.K_e]:
             player.inventory.open()
-        if key[pygame.K_w]:
-            y -= 3
         if key[pygame.K_a]:
-            x -= 3
+            x -= 0.1
         if key[pygame.K_d]:
-            x += 3
+            x += 0.1
         if key[pygame.K_s]:
-            y += 3
+            y += 0.1
         pygame.display.update()
         
         
