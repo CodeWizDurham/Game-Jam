@@ -19,7 +19,7 @@ shipX = 300
 effectSize = 5
 
 def end():
-    font = pygame.font.SysFont("calibri", 20)
+    font = pygame.font.SysFont("Sans", 20)
     text = font.render("The game is not here yet, sorry.", 1, (255, 255, 255), (0, 0, 0))
     screen.blit(text, (0, 100))
     pygame.display.update()
