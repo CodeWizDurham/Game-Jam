@@ -5,6 +5,9 @@ import start
 
 screen = pygame.display.set_mode((900, 600))
 screen.fill("gray")
+pygame.display.set_caption("Shipwrecked - Game Jam")
+ship = pygame.image.load("Assets/ship.png")
+pygame.display.set_icon(ship)
 pygame.display.update()
 
 class player:
