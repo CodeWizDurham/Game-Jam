@@ -35,19 +35,18 @@ def main():
             pygame.draw.rect(screen, (0, 150, 0), trees[i])
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                quit()
-            if event.type == pygame.KEYDOWN:
-                key = pygame.key.get_pressed()
-                if key[pygame.K_e]:
-                    player.inventory.open()
-                if key[pygame.K_w]:
-                    y -= 3
-                if key[pygame.K_a]:
-                    x -= 3
-                if key[pygame.K_d]:
-                    x += 3
-                if key[pygame.K_s]:
-                    y += 3
+                quit() 
+        key = pygame.key.get_pressed()
+        if key[pygame.K_e]:
+            player.inventory.open()
+        if key[pygame.K_w]:
+            y -= 3
+        if key[pygame.K_a]:
+            x -= 3
+        if key[pygame.K_d]:
+            x += 3
+        if key[pygame.K_s]:
+            y += 3
         pygame.display.update()
         
         
