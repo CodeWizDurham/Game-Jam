@@ -11,6 +11,11 @@ pygame.display.set_icon(ship)
 pygame.display.update()
 hotbar = [None, None, None, None, None]
 
+pygame.mixer.init()
+hit_sound = pygame.mixer.Sound("Assets/attack.wav")
+pygame.mixer_music.load("Assets/Moonlight Beach.mp3")
+pygame.mixer_music.play(1)
+
 class player:
     class inventory:
         def open():
@@ -84,14 +89,17 @@ def main():
             if key[pygame.K_e]:
                 trees.pop(0)
                 trees.insert(0, pygame.Rect(-1000, -1000, 0, 0))
+                hit_sound.play()
         if second_active == True:
             if key[pygame.K_e]:
                 trees.pop(1)
                 trees.insert(1, pygame.Rect(-1000, -1000, 0, 0))
+                hit_sound.play()
         if third_active == True:
             if key[pygame.K_e]:
                 trees.pop(2)
                 trees.insert(2, pygame.Rect(-1000, -1000, 0, 0))
+                hit_sound.play()
         pygame.display.update()
         
 if __name__ == "__main__":
