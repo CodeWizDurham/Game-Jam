@@ -5,7 +5,7 @@ pygame.init()
 water = pygame.image.load("Assets/water.png")
 water = pygame.transform.scale(water, (400, 400))
 
-screen = pygame.display.set_mode((300, 300))
+screen = pygame.display.set_mode((400, 300))
 pygame.display.set_caption("Shipwrecked - Main Menu")
 pygame.display.set_icon(water)
 
@@ -29,7 +29,7 @@ def mainMenu():
         
         screen.blit(water, (0, 0))
         
-        font = pygame.font.SysFont("calibri", 40)
+        font = pygame.font.SysFont("Sans", 40)
         mainText = font.render("Shipwrecked", 1, (255, 255, 255))
         screen.blit(mainText, (25, 100))
         
