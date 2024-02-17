@@ -26,6 +26,11 @@ class player:
                         main()
                         break
 
+class hotbar:
+    def add_item(slef, id):
+        if id == "stone":
+            hotbar[0]
+
 def main():
     key = pygame.key.get_pressed()
     x = 450
