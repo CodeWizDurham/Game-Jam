@@ -62,23 +62,23 @@ def main():
                 quit()
 
         key = pygame.key.get_pressed()
-        if key[pygame.K_w]:
-            y -= 0.1
         if key[pygame.K_q]:
             player.inventory.open()
-        if key[pygame.K_a]:
+        if key[pygame.K_w] and y > 0:
+            y -= 0.1
+        if key[pygame.K_a] and x > 0:
             x -= 0.1
-        if key[pygame.K_d]:
+        if key[pygame.K_d] and x < 900:
             x += 0.1
-        if key[pygame.K_s]:
+        if key[pygame.K_s] and y < 600:
             y += 0.1
         if first_active == True:
             if key[pygame.K_e]:
                 trees.pop(0)
-                trees.insert(1, pygame.Rect(-10, -10, 0, 0))
+                trees.insert(0, pygame.Rect(-10, -10, 0, 0))
         if second_active == True:
             if key[pygame.K_e]:
-                trees.pop(0)
+                trees.pop(1)
                 trees.insert(1, pygame.Rect(-10, -10, 0, 0))
         if third_active == True:
             if key[pygame.K_e]:
