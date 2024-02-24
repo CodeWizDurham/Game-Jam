@@ -61,6 +61,9 @@ def main():
         second_active = None
         third_active = None
         screen.fill("gray")
+        groundImg = pygame.image.load("Assets/ground.png")
+        groundImg = pygame.transform.scale(groundImg, (900, 600))
+        screen.blit(groundImg, (0, 0))
         PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
         screen.blit(PlAYeR.image, PlAYeR.rect.center)
         E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))

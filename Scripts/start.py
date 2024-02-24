@@ -34,7 +34,7 @@ else:
 
 #setup
 screen = pygame.display.set_mode((400, 300))
-pygame.display.set_caption("Shipwwrecked - Begining")
+pygame.display.set_caption("Shipwrecked - Begining")
 pygame.display.set_icon(ship)
 clock = pygame.time.Clock()
 
