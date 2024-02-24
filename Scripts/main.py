@@ -43,6 +43,17 @@ class hotbarC:
             try:
                 if self.hotbar[0] == 1:
                     pygame.draw.rect(screen, (200, 150, 100), pygame.Rect(230, 500, 100, 100), border_radius=3)
+                if self.hotbar[1] == 1:
+                    pygame.draw.rect(screen, (200, 150, 100), pygame.Rect(230, 500, 100, 100), border_radius=3)
+                if self.hotbar[2] == 1:
+                    pygame.draw.rect(screen, (200, 150, 100), pygame.Rect(230, 500, 100, 100), border_radius=3)
+                    
+                if self.hotbar[0] == 2:
+                    pygame.draw.rect(screen, "gray", pygame.Rect(230, 500, 100, 100), border_radius=3)
+                if self.hotbar[1] == 2:
+                    pygame.draw.rect(screen, "gray", pygame.Rect(230, 500, 100, 100), border_radius=3)
+                if self.hotbar[2] == 2:
+                    pygame.draw.rect(screen, "gray", pygame.Rect(230, 500, 100, 100), border_radius=3)
             except:
                 None
 
@@ -54,13 +65,14 @@ def main():
     x = 450
     y = 300
     trees = [pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 450), random.randint(0, 300), 50, 50),
-             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50)]
+             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50)]
 
     while True:
         clock.tick(30)
         first_active = None
         second_active = None
         third_active = None
+        fourth_active = None
         screen.fill("gray")
         groundImg = pygame.image.load("Assets/ground.png")
         groundImg = pygame.transform.scale(groundImg, (900, 600))
@@ -70,8 +82,10 @@ def main():
         E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
         hotbar.add_screen()
 
-        for i in range(0, 3, 1):
+        for i in range(0, 4, 1):
             tree = PygE.image(["Assets", "tree.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
+            if i == 3:
+                tree = PygE.image(["Assets", "cave.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
             screen.blit(tree.image, (trees[i].x, trees[i].y))
 
         if PlAYeR.rect.colliderect(trees[0]):
@@ -86,6 +100,10 @@ def main():
             if trees[2] != 0:
                 screen.blit(E_Button.image, (trees[2].x + 25, trees[2].y + 25))
                 third_active = True
+        if PlAYeR.rect.colliderect(trees[3]):
+            if trees[3] != 0:
+                screen.blit(E_Button.image, (trees[3].x + 25, trees[3].y + 25))
+                fourth_active = True
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -121,6 +139,12 @@ def main():
                 trees.insert(2, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
                 hotbar.add_item(1)
+        if fourth_active == True:
+            if key[pygame.K_e]:
+                trees.pop(3)
+                trees.insert(3, pygame.Rect(-1000, -1000, 0, 0))
+                hit_sound.play()
+                hotbar.add_item(2)
         pygame.display.update()
         
 if __name__ == "__main__":
