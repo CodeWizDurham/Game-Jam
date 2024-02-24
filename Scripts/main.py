@@ -14,6 +14,7 @@ hotbar = [None, None, None, None, None]
 pygame.mixer.init()
 hit_sound = pygame.mixer.Sound("Assets/attack.wav")
 pygame.mixer_music.load("Assets/Moonlight Beach.mp3")
+pygame.mixer_music.set_volume(0.5)
 pygame.mixer_music.play(1)
 
 class player:
