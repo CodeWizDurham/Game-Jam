@@ -41,9 +41,8 @@ class hotbarC:
     def add_screen(self):
             print(self.hotbar)
             try:
-                if hotbar[0] == 1:
-                    pygame.draw.rect(screen, "brown", pygame.Rect(0, 50, 0, 0), border_radius=3)
-                    print("True")
+                if self.hotbar[0] == 1:
+                    pygame.draw.rect(screen, (200, 150, 100), pygame.Rect(230, 500, 100, 100), border_radius=3)
             except:
                 None
 
