@@ -13,7 +13,6 @@ pygame.display.update()
 pygame.mixer.init()
 hit_sound = pygame.mixer.Sound("Assets/attack.wav")
 pygame.mixer_music.load("Assets/Moonlight Beach.mp3")
-pygame.mixer_music.set_volume(0.5)
 pygame.mixer_music.play(1)
 
 class player:
@@ -36,11 +35,9 @@ class hotbarC:
         self.hotbar = hotbar
     def add_item(self, id: int):
         if id == 1:
-            for i in range(0, 4, 1):
-                self.hotbar.append(1)
+            self.hotbar.append(1)
         if id == 2:
-            for i in range(0, 4, 1):
-                self.hotbar.append(2)
+            self.hotbar.append(2)
 
 hotbar = hotbarC([])
 
