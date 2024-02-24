@@ -38,6 +38,14 @@ class hotbarC:
             self.hotbar.append(1)
         if id == 2:
             self.hotbar.append(2)
+    def add_screen(self):
+            print(self.hotbar)
+            try:
+                if hotbar[0] == 1:
+                    pygame.draw.rect(screen, "brown", pygame.Rect(0, 50, 0, 0), border_radius=3)
+                    print("True")
+            except:
+                None
 
 hotbar = hotbarC([])
 
@@ -56,6 +64,7 @@ def main():
         PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
         screen.blit(PlAYeR.image, PlAYeR.rect.center)
         E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
+        hotbar.add_screen()
 
         for i in range(0, 3, 1):
             tree = PygE.image(["Assets", "tree.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
