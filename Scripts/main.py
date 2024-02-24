@@ -48,6 +48,7 @@ class hotbarC:
                 None
 
 hotbar = hotbarC([])
+clock = pygame.time.Clock()
 
 def main():
     key = pygame.key.get_pressed()
@@ -57,6 +58,7 @@ def main():
              pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50)]
 
     while True:
+        clock.tick(30)
         first_active = None
         second_active = None
         third_active = None
