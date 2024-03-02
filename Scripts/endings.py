@@ -9,13 +9,13 @@ water = pygame.transform.scale(water, (400, 400))
 ship = pygame.image.load("Assets/ship.png")
 ship = pygame.transform.scale(ship, (100, 60))
 thingfromspace = pygame.image.load("Assets/blackhole.png")
-tree = pygame.image.load("Assets/tree.png")
+goblin = pygame.image.load("Assets/goblin.png")
 ground = pygame.image.load("Assets/ground.png")
 ground = pygame.transform.scale(ground, (400, 400))
 
 #set values
 shipX = 300
-treeSize = 100
+goblinSize = 100
 effectSize = 50
 
 #setup
@@ -27,9 +27,9 @@ clock = pygame.time.Clock()
 def loop(ending):
     global shipX
     global effectSize
-    global treeSize
+    global goblinSize
     global thingfromspace
-    global tree
+    global goblin
     #main loop
     run = True
     while run:
@@ -48,14 +48,14 @@ def loop(ending):
                 run = False      
         elif ending == 2:
             screen.blit(ground, (0, 0))
-            tree = pygame.transform.scale(tree, (treeSize, treeSize))
-            if treeSize <= 1:
+            goblin = pygame.transform.scale(goblin, (goblinSize, goblinSize))
+            if goblinSize <= 1:
                 effectSize += 10
                 thingfromspaceNew = pygame.transform.scale(thingfromspace, (effectSize, effectSize))
                 screen.blit(thingfromspaceNew, (50 - effectSize / 4, 50 - effectSize / 4))
-            elif treeSize >= 2:
-                treeSize -= 1
-                screen.blit(tree, (50 - treeSize / 4, 100 - treeSize / 4))
+            elif goblinSize >= 2:
+                goblinSize -= 1
+                screen.blit(goblin, (50 - goblinSize / 4, 100 - goblinSize / 4))
                 
             if effectSize >= 600:
                 run = False
