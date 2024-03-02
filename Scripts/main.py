@@ -40,20 +40,34 @@ class hotbarC:
             self.hotbar.append(2)
     def add_screen(self):
             print(self.hotbar)
+            rect1 = pygame.Rect(230, 450, 100, 100)
+            rect2 = pygame.Rect(380, 450, 100, 100)
+            rect3 = pygame.Rect(380 + 150, 450, 100, 100)
+            rect4 = pygame.Rect(380 + 300, 450, 100, 100)
+            rect5 = pygame.Rect(380 + 450, 450, 100, 100)
             try:
                 if self.hotbar[0] == 1:
-                    pygame.draw.rect(screen, (200, 150, 100), pygame.Rect(230, 500, 100, 100), border_radius=3)
+                    pygame.draw.rect(screen, (200, 150, 100), rect1, border_radius=3)
                 if self.hotbar[1] == 1:
-                    pygame.draw.rect(screen, (200, 150, 100), pygame.Rect(230, 500, 100, 100), border_radius=3)
+                    pygame.draw.rect(screen, (200, 150, 100), rect2, border_radius=3)
                 if self.hotbar[2] == 1:
-                    pygame.draw.rect(screen, (200, 150, 100), pygame.Rect(230, 500, 100, 100), border_radius=3)
+                    pygame.draw.rect(screen, (200, 150, 100), rect3, border_radius=3)
+                if self.hotbar[3] == 1:
+                    pygame.draw.rect(screen, (200, 150, 100), rect4, border_radius=3)
+                if self.hotbar[4] == 1:
+                    pygame.draw.rect(screen, (200, 150, 100), rect5, border_radius=3)
                     
                 if self.hotbar[0] == 2:
-                    pygame.draw.rect(screen, "gray", pygame.Rect(230, 500, 100, 100), border_radius=3)
+                    pygame.draw.rect(screen, "gray", rect1, border_radius=3)
+                    print("hi")
                 if self.hotbar[1] == 2:
-                    pygame.draw.rect(screen, "gray", pygame.Rect(230, 500, 100, 100), border_radius=3)
+                    pygame.draw.rect(screen, "gray", rect2, border_radius=3)
                 if self.hotbar[2] == 2:
-                    pygame.draw.rect(screen, "gray", pygame.Rect(230, 500, 100, 100), border_radius=3)
+                    pygame.draw.rect(screen, "gray", rect3, border_radius=3)
+                if self.hotbar[3] == 2:
+                    pygame.draw.rect(screen, "gray", rect4, border_radius=3)
+                if self.hotbar[4] == 2:
+                    pygame.draw.rect(screen, "gray", rect5, border_radius=3)
             except:
                 None
 
