@@ -36,11 +36,11 @@ class hotbarC:
     def add_item(self, id: int):
         self.hotbar.append(id)
     def add_screen(self):
-            rect1 = pygame.Rect(230, 450, 100, 100)
-            rect2 = pygame.Rect(380, 450, 100, 100)
-            rect3 = pygame.Rect(380 + 150, 450, 100, 100)
-            rect4 = pygame.Rect(380 + 300, 450, 100, 100)
-            rect5 = pygame.Rect(380 + 450, 450, 100, 100)
+            rect1 = pygame.Rect(100, 525, 50, 50)
+            rect2 = pygame.Rect(250, 525, 50, 50)
+            rect3 = pygame.Rect(250 + 150, 525, 50, 50)
+            rect4 = pygame.Rect(250 + 300, 525, 50, 50)
+            rect5 = pygame.Rect(250 + 450, 525, 50, 50)
             for i in range(len(self.hotbar)):
                 rect_to_use = rect1
                 if i + 1 == 2:
@@ -52,11 +52,11 @@ class hotbarC:
                 elif i + 1 == 5:
                     rect_to_use = rect5
                 if self.hotbar[i] == 1:
-                    pygame.draw.rect(screen, (200, 150, 100), rect_to_use, border_radius=3)
+                    pygame.draw.rect(screen, (200, 150, 100), rect_to_use)
                 stoneImg = pygame.image.load("Assets/stone.png")
-                stoneImg = pygame.transform.scale(stoneImg, (100, 100))
+                stoneImg = pygame.transform.scale(stoneImg, (50, 50))
                 if self.hotbar[i] == 2:
-                    pygame.draw.rect(screen, "gray", rect_to_use, border_radius=3)
+                    screen.blit(stoneImg, rect_to_use)
 hotbar = hotbarC([])
 clock = pygame.time.Clock()
 
@@ -69,12 +69,14 @@ def main():
     groundImg = pygame.image.load("Assets/ground.png")
     groundImg = pygame.transform.scale(groundImg, (900, 600))
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
+    door = PygE.image(["Assets", "door.png"], 0, (100, 100), pygame.Rect(900, 300, 100, 100))
     while True:
         clock.tick(60)
         first_active = None
         second_active = None
         third_active = None
         fourth_active = None
+        fifth_active = None
         screen.fill("gray")
         screen.blit(groundImg, (0, 0))
         PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
@@ -103,6 +105,9 @@ def main():
             if trees[3] != 0:
                 screen.blit(E_Button.image, (trees[3].x + 25, trees[3].y + 25))
                 fourth_active = True
+        if PlAYeR.rect.colliderect(door.rect):
+            screen.blit(E_Button.image, (E_Button.rect.x + 25, E_Button.rect.y + 50))
+            fifth_active = True
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
