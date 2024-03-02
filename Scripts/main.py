@@ -69,7 +69,6 @@ def main():
     groundImg = pygame.image.load("Assets/ground.png")
     groundImg = pygame.transform.scale(groundImg, (900, 600))
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
-    PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
     while True:
         clock.tick(60)
         first_active = None
@@ -78,6 +77,7 @@ def main():
         fourth_active = None
         screen.fill("gray")
         screen.blit(groundImg, (0, 0))
+        PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
         screen.blit(PlAYeR.image, PlAYeR.rect.center)
         hotbar.add_screen()
 
@@ -112,13 +112,13 @@ def main():
         if key[pygame.K_q]:
             player.inventory.open()
         if key[pygame.K_w] and y > 0:
-            y -= 0.5
+            y -= 1
         if key[pygame.K_a] and x > 0:
-            x -= 0.5
+            x -= 1
         if key[pygame.K_d] and x < 900:
-            x += 0.5
+            x += 1
         if key[pygame.K_s] and y < 600:
-            y += 0.5
+            y += 1
 
         if first_active == True:
             if key[pygame.K_e]:
