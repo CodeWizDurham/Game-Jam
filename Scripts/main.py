@@ -66,20 +66,19 @@ def main():
     y = 300
     trees = [pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 450), random.randint(0, 300), 50, 50),
              pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50)]
-
+    groundImg = pygame.image.load("Assets/ground.png")
+    groundImg = pygame.transform.scale(groundImg, (900, 600))
+    E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
+    PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
     while True:
-        clock.tick(30)
+        clock.tick(60)
         first_active = None
         second_active = None
         third_active = None
         fourth_active = None
         screen.fill("gray")
-        groundImg = pygame.image.load("Assets/ground.png")
-        groundImg = pygame.transform.scale(groundImg, (900, 600))
         screen.blit(groundImg, (0, 0))
-        PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
         screen.blit(PlAYeR.image, PlAYeR.rect.center)
-        E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
         hotbar.add_screen()
 
         for i in range(0, 4, 1):
