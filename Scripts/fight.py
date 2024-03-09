@@ -90,7 +90,7 @@ def loop(enemyImg):
             screen.blit(plr, plrRect.center)
             for i in range(5):
                 tempRect = rockRect
-                tempRect.center = (random.randint(25, 150), random.randint(100, 300))
+                tempRect.center = (random.randint(0, 250), random.randint(100, 300))
                 rocks.append(tempRect)
         
         if state != 0:
