@@ -2,6 +2,7 @@ import pygame
 import random
 import PygE
 import start
+pygame.font.init()
 
 screen = pygame.display.set_mode((900, 600))
 screen.fill("gray")
@@ -20,27 +21,50 @@ class player:
         def open():
             inventory_rect = pygame.Rect(450 - (450 / 2), 300 - (350 / 2), 450, 350)
             inventory_picture_rect = pygame.Rect(230, 130, 650 / 4, 550 / 4)
-            pygame.draw.rect(screen, "white", inventory_rect, border_radius=10)
-            pygame.draw.rect(screen, "gray", inventory_picture_rect, border_radius=15)
-            pygame.display.update()
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    key2 = pygame.key.get_pressed()
-                    if key2[pygame.K_e]:
-                        main()
-                        break
+            while True:
+                pygame.draw.rect(screen, "white", inventory_rect, border_radius=10)
+                pygame.draw.rect(screen, "gray", inventory_picture_rect, border_radius=15)
+                pygame.display.update()
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        quit()
+                    if event.type == pygame.KEYDOWN:
+                        key2 = pygame.key.get_pressed()
+                        if key2[pygame.K_q]:
+                            break
+                        if key2[pygame.K_e]:
+                            if player.inventory.craft() == "z":
+                                break
+
+        def craft():
+            pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial")
+            sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial")
+            stick_text = PygE.Text(30, "3. 1 Wood", (450, 500), "Arial")
+            while True:
+                screen.fill("gray")
+                screen.blit(pickaxe_text.image, pickaxe_text.pos)
+                screen.blit(sword_text.image, sword_text.pos)
+                screen.blit(stick_text.image, stick_text.pos)
+                for event in pygame.event.get():
+                    key3 = pygame.key.get_pressed()
+                    if event.type == pygame.QUIT:
+                        quit()
+                    if key3[pygame.K_z]:
+                        return "z"
+
+                pygame.display.update()
 
 class hotbarC:
     def __init__(self, hotbar: list):
         self.hotbar = hotbar
     def add_item(self, id: int):
-        self.hotbar.append(id)
+            self.hotbar.append(id)
     def add_screen(self):
             rect1 = pygame.Rect(100, 525, 50, 50)
-            rect2 = pygame.Rect(250, 525, 50, 50)
-            rect3 = pygame.Rect(250 + 150, 525, 50, 50)
-            rect4 = pygame.Rect(250 + 300, 525, 50, 50)
-            rect5 = pygame.Rect(250 + 450, 525, 50, 50)
+            rect2 = pygame.Rect(200, 525, 50, 50)
+            rect3 = pygame.Rect(200 + 100, 525, 50, 50)
+            rect4 = pygame.Rect(200 + 200, 525, 50, 50)
+            rect5 = pygame.Rect(200 + 300, 525, 50, 50)
             for i in range(len(self.hotbar)):
                 rect_to_use = rect1
                 if i + 1 == 2:
@@ -52,7 +76,7 @@ class hotbarC:
                 elif i + 1 == 5:
                     rect_to_use = rect5
                 if self.hotbar[i] == 1:
-                    pygame.draw.rect(screen, (200, 150, 100), rect_to_use)
+                        pygame.draw.rect(screen, (200, 150, 100), rect_to_use)
                 stoneImg = pygame.image.load("Assets/stone.png")
                 stoneImg = pygame.transform.scale(stoneImg, (50, 50))
                 if self.hotbar[i] == 2:
@@ -81,6 +105,7 @@ def main():
         screen.blit(groundImg, (0, 0))
         PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
         screen.blit(PlAYeR.image, PlAYeR.rect.center)
+        screen.blit(door.image, door.rect.center)
         hotbar.add_screen()
 
         for i in range(0, 4, 1):
