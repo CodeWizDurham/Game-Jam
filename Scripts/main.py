@@ -2,6 +2,7 @@ import pygame
 import random
 import PygE
 import start
+import fight
 pygame.font.init()
 
 screen = pygame.display.set_mode((900, 600))
@@ -15,44 +16,6 @@ pygame.mixer.init()
 hit_sound = pygame.mixer.Sound("Assets/attack.wav")
 pygame.mixer_music.load("Assets/Moonlight Beach.mp3")
 pygame.mixer_music.play(1)
-
-class player:
-    class inventory:
-        def open():
-            inventory_rect = pygame.Rect(450 - (450 / 2), 300 - (350 / 2), 450, 350)
-            inventory_picture_rect = pygame.Rect(230, 130, 650 / 4, 550 / 4)
-            while True:
-                pygame.draw.rect(screen, "white", inventory_rect, border_radius=10)
-                pygame.draw.rect(screen, "gray", inventory_picture_rect, border_radius=15)
-                pygame.display.update()
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        quit()
-                    if event.type == pygame.KEYDOWN:
-                        key2 = pygame.key.get_pressed()
-                        if key2[pygame.K_q]:
-                            break
-                        if key2[pygame.K_e]:
-                            if player.inventory.craft() == "z":
-                                break
-
-        def craft():
-            pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial")
-            sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial")
-            stick_text = PygE.Text(30, "3. 1 Wood", (450, 500), "Arial")
-            while True:
-                screen.fill("gray")
-                screen.blit(pickaxe_text.image, pickaxe_text.pos)
-                screen.blit(sword_text.image, sword_text.pos)
-                screen.blit(stick_text.image, stick_text.pos)
-                for event in pygame.event.get():
-                    key3 = pygame.key.get_pressed()
-                    if event.type == pygame.QUIT:
-                        quit()
-                    if key3[pygame.K_z]:
-                        return "z"
-
-                pygame.display.update()
 
 class hotbarC:
     def __init__(self, hotbar: list):
@@ -107,6 +70,8 @@ def main():
         screen.blit(PlAYeR.image, PlAYeR.rect.center)
         screen.blit(door.image, door.rect.center)
         hotbar.add_screen()
+        global open1
+        open1 = False
 
         for i in range(0, 4, 1):
             tree = PygE.image(["Assets", "tree.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
@@ -140,7 +105,7 @@ def main():
 
         key = pygame.key.get_pressed()
         if key[pygame.K_q]:
-            player.inventory.open()
+            open1 = True
         if key[pygame.K_w] and y > 0:
             y -= 1
         if key[pygame.K_a] and x > 0:
@@ -174,7 +139,28 @@ def main():
                 trees.insert(3, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
                 hotbar.add_item(2)
-        pygame.display.update()
+        
+        if open1 == True:
+            pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial", (255, 0, 0))
+            sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial", (255, 0, 0))
+            stick_text = PygE.Text(30, "3. 1 Wood", (450, 500), "Arial", (255, 0, 0))
+
+            pickaxe_text2 = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial", 0, 255, 0)
+            sword_text2 = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial", (0, 255))
+            stick_text2 = PygE.Text(30, "3. 1 Wood", (450, 500), "Arial", (0, 255, 0))
+            while True:
+                screen.fill("gray")
+                screen.blit(pickaxe_text.image, pickaxe_text.pos)
+                screen.blit(sword_text.image, sword_text.pos)
+                screen.blit(stick_text.image, stick_text.pos)
+
+                for event in pygame.event.get():
+                    key3 = pygame.key.get_pressed()
+                    if event.type == pygame.QUIT:
+                        quit()
+                    if key3[pygame.K_1]:
+                        for i in range(len(hotbar)):
+                            None
         
 if __name__ == "__main__":
     main()
