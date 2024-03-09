@@ -57,6 +57,7 @@ def loop(enemyImg):
     
     rocks = []
     waiting = 1
+    enemyRect = enemyImg.Get_rect()
     
     #main loop
     run = True
@@ -86,12 +87,15 @@ def loop(enemyImg):
             hp = font.render("Enemy Health: " + str(health), 1, (255, 50, 50))
             screen.blit(hp, (15, 25))
         elif state == 2:
-            enemyPos = 175
             screen.blit(plr, plrRect.center)
-            for i in range(5):
-                tempRect = rockRect
-                tempRect.center = (random.randint(0, 250), random.randint(100, 300))
-                rocks.append(tempRect)
+            attack = random.randint(1, 2)
+            if attack == 1:
+                for i in range(5):
+                    tempRect = rockRect
+                    tempRect.center = (random.randint(0, 250), random.randint(100, 300))
+                    rocks.append(tempRect)
+            elif attack == 2:
+                enemyRect
         
         if state != 0:
             #music
@@ -145,5 +149,6 @@ def loop(enemyImg):
                         atkSound.play()
                         state = 2
                         health -= 50
+                        enemyPos = 175
         
         pygame.display.flip()
