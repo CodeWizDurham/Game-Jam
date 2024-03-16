@@ -161,6 +161,7 @@ def main():
                     if key3[pygame.K_1]:
                         for i in range(len(hotbar)):
                             None
+        pygame.display.update()
         
 if __name__ == "__main__":
     main()
