@@ -44,7 +44,7 @@ plrHealth = 20
 plrX = 50
 plrY = 200
 
-def loop(enemyImg):
+def loop():
     global enemyPos
     global state
     global musicOn
@@ -55,6 +55,7 @@ def loop(enemyImg):
     global rockRect
     global health
     
+    enemyImg = goblin
     rocks = []
     waiting = 1
     enemyRect = enemyImg.Get_rect()
