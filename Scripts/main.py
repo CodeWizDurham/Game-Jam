@@ -88,7 +88,6 @@ def main():
         screen.blit(groundImg, (0, 0))
         PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
         screen.blit(PlAYeR.image, PlAYeR.rect.center)
-        screen.blit(door.image, door.rect.center)
         hotbar.add_screen()
         global open1
         open1 = False
@@ -115,8 +114,10 @@ def main():
             if trees[3] != 0:
                 screen.blit(E_Button.image, (trees[3].x + 25, trees[3].y + 25))
                 fourth_active = True
+        
+        screen.blit(door.image, door.rect.center)
         if PlAYeR.rect.colliderect(door.rect):
-            screen.blit(E_Button.image, (E_Button.rect.x + 25, E_Button.rect.y + 50))
+            screen.blit(E_Button.image, (door.rect.x + 25, door.rect.y + 75))
             fifth_active = True
 
         for event in pygame.event.get():
