@@ -141,13 +141,10 @@ def main():
                 hotbar.add_item(2)
         
         if open1 == True:
-            pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial", (255, 0, 0))
-            sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial", (255, 0, 0))
-            stick_text = PygE.Text(30, "3. 1 Wood", (450, 500), "Arial", (255, 0, 0))
+            pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial")
+            sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial")
+            stick_text = PygE.Text(30, "3. 1 Wood", (450, 500), "Arial")
 
-            pickaxe_text2 = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial", 0, 255, 0)
-            sword_text2 = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial", (0, 255))
-            stick_text2 = PygE.Text(30, "3. 1 Wood", (450, 500), "Arial", (0, 255, 0))
             while True:
                 screen.fill("gray")
                 screen.blit(pickaxe_text.image, pickaxe_text.pos)
@@ -158,9 +155,12 @@ def main():
                     key3 = pygame.key.get_pressed()
                     if event.type == pygame.QUIT:
                         quit()
+                    if key3[pygame.K_q]:
+                        None
                     if key3[pygame.K_1]:
                         for i in range(len(hotbar)):
                             None
+                pygame.display.update()
         pygame.display.update()
         
 if __name__ == "__main__":
