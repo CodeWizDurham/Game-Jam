@@ -44,6 +44,8 @@ class hotbarC:
                 stoneImg = pygame.transform.scale(stoneImg, (50, 50))
                 if self.hotbar[i] == 2:
                     screen.blit(stoneImg, rect_to_use)
+
+
 hotbar = hotbarC([])
 clock = pygame.time.Clock()
 
@@ -56,15 +58,35 @@ def crafting():
     screen.blit(sword_text.image, sword_text.pos)
     screen.blit(stick_text.image, stick_text.pos)
 
+    items = [0, 0, 0]
+
+    key5 = pygame.key.get_pressed()
+
+    for q in range(len(hotbar)):
+        if hotbar[q] == 1:
+            items[0] += 1
+        if hotbar[q] == 2:
+            items[1] += 1
+        if hotbar[q] == 3:
+            items[2] += 1
+
+    if key5[pygame.K_1]:
+        if items[0] >= 3 and items[1] >= 2:
+            hotbar.add_item()
+            for z in range(3):
+                if hotbar[len(hotbar) - 1] == 1:
+                    hotbar.pop(len(hotbar) - 1)
+            for x in range(2):
+                if hotbar[len(hotbar) - 1] == 3:
+                    hotbar.pop(len(hotbar) - 1)
+
     for event in pygame.event.get():
         key3 = pygame.key.get_pressed()
         if event.type == pygame.QUIT:
             quit()
         if key3[pygame.K_q]:
             return False
-        if key3[pygame.K_1]:
-            for i in range(len(hotbar)):
-                None
+                
 
 def main():
     key = pygame.key.get_pressed()
