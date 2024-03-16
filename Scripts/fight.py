@@ -58,7 +58,7 @@ def loop():
     enemyImg = goblin
     rocks = []
     waiting = 1
-    enemyRect = enemyImg.Get_rect()
+    enemyRect = enemyImg.get_rect()
     
     #main loop
     run = True
