@@ -75,7 +75,8 @@ def main():
     groundImg = pygame.image.load("Assets/ground.png")
     groundImg = pygame.transform.scale(groundImg, (900, 600))
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
-    door = PygE.image(["Assets", "door.png"], 0, (100, 100), pygame.Rect(900, 300, 100, 100))
+    door = PygE.image(["Assets", "door.png"], 0, (100, 100), pygame.Rect(800, 300, 100, 100))
+
     while True:
         clock.tick(60)
         first_active = None
@@ -158,6 +159,9 @@ def main():
                 trees.insert(3, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
                 hotbar.add_item(2)
+        if fifth_active == True:
+            if key[pygame.K_e]:
+                fight.loop()
 
         if open1 == True:
             open1 = crafting()
