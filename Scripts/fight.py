@@ -131,6 +131,7 @@ def loop():
                 break
             
         if plrHealth <= 0:
+            pygame.mixer_music.stop()
             endings.loop(2)
         
         if state == 2:

@@ -19,10 +19,12 @@ goblinSize = 100
 effectSize = 50
 
 #setup
+pygame.mixer.init()
 screen = pygame.display.set_mode((400, 300))
 pygame.display.set_caption("Shipwrecked - Ending")
 pygame.display.set_icon(ship)
 clock = pygame.time.Clock()
+pygame.mixer_music.load("Assets/rickroll.mp3")
 
 def loop(ending):
     global shipX
@@ -48,6 +50,7 @@ def loop(ending):
                 run = False      
         elif ending == 2:
             screen.blit(ground, (0, 0))
+            pygame.mixer_music.play(1)
             goblin = pygame.transform.scale(goblin, (goblinSize, goblinSize))
             if goblinSize <= 1:
                 effectSize += 10
