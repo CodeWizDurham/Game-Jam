@@ -54,7 +54,7 @@ clock = pygame.time.Clock()
 def crafting():
     pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial")
     sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial")
-    stick_text = PygE.Text(30, "3. 1 Wood", (450, 500), "Arial")
+    stick_text = PygE.Text(30, "3. Stick: 1 Wood", (450, 500), "Arial")
     screen.fill("gray")
     screen.blit(pickaxe_text.image, pickaxe_text.pos)
     screen.blit(sword_text.image, sword_text.pos)
@@ -76,6 +76,7 @@ def crafting():
         None
 
     if key5[pygame.K_1]:
+        print("dfSDGHWHDZFH")
         if items[0] >= 3 and items[1] >= 2:
             hotbar.add_item(4)
             for z in range(3):
