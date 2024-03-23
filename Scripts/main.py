@@ -62,13 +62,11 @@ hotbar = hotbarC([])
 clock = pygame.time.Clock()
 
 def crafting():
-    pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial")
-    sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial")
-    stick_text = PygE.Text(30, "3. Stick: 1 Wood", (450, 500), "Arial")
+    pickaxe_text = PygE.Text(30, "1. Pickaxe: 4 Wood", (450, 200), "Arial")
+    sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Wood", (450, 350), "Arial")
     screen.fill("gray")
     screen.blit(pickaxe_text.image, pickaxe_text.pos)
     screen.blit(sword_text.image, sword_text.pos)
-    screen.blit(stick_text.image, stick_text.pos)
 
     items = [0, 0, 0]
 
