@@ -39,8 +39,8 @@ mus = pygame.mixer.Sound("Assets/Captain Scurvy.mp3")
 state = 0
 enemyPos = 125
 musicOn = False
-health = 200
-plrHealth = 20
+health = 350
+plrHealth = 15
 plrX = 50
 plrY = 200
 
@@ -59,6 +59,7 @@ def loop():
     rocks = []
     waiting = 1
     enemyRect = enemyImg.get_rect()
+    atkTime = 1
     
     #main loop
     run = True
@@ -89,12 +90,14 @@ def loop():
             screen.blit(hp, (15, 25))
         elif state == 2:
             screen.blit(plr, plrRect.center)
-            attack = random.randint(1, 2)
-            if attack == 1:
-                for i in range(5):
+            attack = 1
+            atkTime += 1
+            if attack == 1 and atkTime >= 4:
+                for i in range(2):
                     tempRect = rockRect
                     tempRect.center = (random.randint(0, 250), random.randint(100, 300))
                     rocks.append(tempRect)
+                    atkTime = 1
             elif attack == 2:
                 enemyRect
         
@@ -122,7 +125,7 @@ def loop():
         for i in range(len(rocks)):
             screen.blit(rock, rocks[i].center)
             if plrRect.colliderect(rocks[i]):
-                plrHealth -= 1
+                plrHealth -= 2
                 atkSound.play(1)
                 rocks.clear()
                 break
