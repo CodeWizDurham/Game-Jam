@@ -102,8 +102,9 @@ def main():
     groundImg = pygame.transform.scale(groundImg, (900, 600))
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
     door = PygE.image(["Assets", "door.png"], 0, (100, 100), pygame.Rect(800, 300, 100, 100))
+    run = True
 
-    while True:
+    while run == True:
         clock.tick(60)
         first_active = None
         second_active = None
@@ -153,6 +154,7 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                run = False
                 quit()
 
         key = pygame.key.get_pressed()
@@ -199,6 +201,10 @@ def main():
                 hotbar.add_item(2)
         if fifth_active == True:
             if key[pygame.K_e]:
+                run = False
+                pygame.mixer_music.stop()
+                pygame.display.set_mode((350, 300))
+                pygame.display.set_caption("Shipwrecked - Battle")
                 fight.loop()
 
         if open1 == True:
