@@ -99,7 +99,8 @@ def main():
     y = 300
     trees = [pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 450), random.randint(0, 300), 50, 50),
              pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50),
-             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50)]
+             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50),
+             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50)]
     groundImg = pygame.image.load("Assets/ground.png")
     groundImg = pygame.transform.scale(groundImg, (900, 600))
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
@@ -124,9 +125,9 @@ def main():
         global open1
         open1 = False
 
-        for i in range(0, 6, 1):
+        for i in range(0, 7, 1):
             tree = PygE.image(["Assets", "tree.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
-            if i == 2 or i == 3 or i == 5:
+            if i == 5 or i == 6:
                 stone = PygE.image(["Assets", "cave.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
                 screen.blit(stone.image, (trees[i].x, trees[i].y))
             else:
@@ -174,9 +175,9 @@ def main():
             speed = 5
         else:
             speed = 1
-        if key[pygame.K_w] and y > 0:
+        if key[pygame.K_w] and y > 10:
             y -= speed
-        if key[pygame.K_a] and x > 0:
+        if key[pygame.K_a] and x > 10:
             x -= speed
         if key[pygame.K_d] and x < 900:
             x += speed
