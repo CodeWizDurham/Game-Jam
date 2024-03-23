@@ -55,6 +55,7 @@ class hotbarC:
                 if self.hotbar[i] == 2:
                     screen.blit(stoneImg, rect_to_use)
                 if self.hotbar[i] == 4:
+                    print("fasdgadfgafdgafgafgafgadfg")
                     screen.blit(pickaxeImage, rect_to_use)
 
 
@@ -68,7 +69,7 @@ def crafting():
     screen.blit(pickaxe_text.image, pickaxe_text.pos)
     screen.blit(sword_text.image, sword_text.pos)
 
-    items = [0, 0, 0]
+    items = [0, 0]
 
     key5 = pygame.key.get_pressed()
 
@@ -78,13 +79,12 @@ def crafting():
                 items[0] += 1
             if hotbar[q] == 2:
                 items[1] += 1
-            if hotbar[q] == 3:
-                items[2] += 1
     except:
         None
-
+    print(items)
+    print(len(hotbar))
     if key5[pygame.K_1]:
-        if items[0] >= 3 and items[1] >= 2:
+        if items[0] >= 4:
             hotbar.add_item(4)
             for z in range(3):
                 if hotbar[len(hotbar) - 1] == 1:
