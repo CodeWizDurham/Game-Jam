@@ -62,17 +62,20 @@ def crafting():
 
     key5 = pygame.key.get_pressed()
 
-    for q in range(len(hotbar)):
-        if hotbar[q] == 1:
-            items[0] += 1
-        if hotbar[q] == 2:
-            items[1] += 1
-        if hotbar[q] == 3:
-            items[2] += 1
+    try:
+        for q in range(len(hotbar)):
+            if hotbar[q] == 1:
+                items[0] += 1
+            if hotbar[q] == 2:
+                items[1] += 1
+            if hotbar[q] == 3:
+                items[2] += 1
+    except:
+        None
 
     if key5[pygame.K_1]:
         if items[0] >= 3 and items[1] >= 2:
-            hotbar.add_item()
+            hotbar.add_item(4)
             for z in range(3):
                 if hotbar[len(hotbar) - 1] == 1:
                     hotbar.pop(len(hotbar) - 1)
@@ -93,6 +96,7 @@ def main():
     x = 450
     y = 300
     trees = [pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 450), random.randint(0, 300), 50, 50),
+             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50),
              pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50)]
     groundImg = pygame.image.load("Assets/ground.png")
     groundImg = pygame.transform.scale(groundImg, (900, 600))
@@ -106,6 +110,7 @@ def main():
         third_active = None
         fourth_active = None
         fifth_active = None
+        sixth_active = None
         screen.fill("gray")
         screen.blit(groundImg, (0, 0))
         PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
@@ -136,6 +141,10 @@ def main():
             if trees[3] != 0:
                 screen.blit(E_Button.image, (trees[3].x + 25, trees[3].y + 25))
                 fourth_active = True
+        if PlAYeR.rect.colliderect(trees[4]):
+            if trees[4] != 0:
+                screen.blit(E_Button.image, (trees[4].x + 25, trees[4].y + 25))
+                sixth_active = True
         
         screen.blit(door.image, door.rect.center)
         if PlAYeR.rect.colliderect(door.rect):
@@ -180,6 +189,12 @@ def main():
             if key[pygame.K_e]:
                 trees.pop(3)
                 trees.insert(3, pygame.Rect(-1000, -1000, 0, 0))
+                hit_sound.play()
+                hotbar.add_item(2)
+        if sixth_active == True:
+            if key[pygame.K_e]:
+                trees.pop(4)
+                trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
                 hotbar.add_item(2)
         if fifth_active == True:
