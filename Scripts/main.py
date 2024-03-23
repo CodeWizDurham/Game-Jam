@@ -105,6 +105,7 @@ def main():
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
     door = PygE.image(["Assets", "door.png"], 0, (100, 100), pygame.Rect(800, 300, 100, 100))
     run = True
+    speed = 1
 
     while run == True:
         clock.tick(60)
@@ -169,14 +170,18 @@ def main():
         key = pygame.key.get_pressed()
         if key[pygame.K_q]:
             open1 = not open1
+        if key[pygame.K_LSHIFT]:
+            speed = 2
+        else:
+            speed = 1
         if key[pygame.K_w] and y > 0:
-            y -= 1
+            y -= speed
         if key[pygame.K_a] and x > 0:
-            x -= 1
+            x -= speed
         if key[pygame.K_d] and x < 900:
-            x += 1
+            x += speed
         if key[pygame.K_s] and y < 600:
-            y += 1
+            y += speed
 
         if first_active == True:
             if key[pygame.K_e]:
