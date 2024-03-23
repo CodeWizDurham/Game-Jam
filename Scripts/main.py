@@ -74,7 +74,6 @@ def crafting():
         None
 
     if key5[pygame.K_1]:
-        print("dfSDGHWHDZFH")
         if items[0] >= 3 and items[1] >= 2:
             hotbar.add_item(4)
             for z in range(3):
@@ -122,11 +121,13 @@ def main():
         global open1
         open1 = False
 
-        for i in range(0, 4, 1):
+        for i in range(0, 6, 1):
             tree = PygE.image(["Assets", "tree.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
-            if i == 3:
-                tree = PygE.image(["Assets", "cave.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
-            screen.blit(tree.image, (trees[i].x, trees[i].y))
+            if i == 2 or i == 3 or i == 5:
+                stone = PygE.image(["Assets", "cave.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
+                screen.blit(stone.image, (trees[i].x, trees[i].y))
+            else:
+                screen.blit(tree.image, (trees[i].x, trees[i].y))
 
         if PlAYeR.rect.colliderect(trees[0]):
             if trees[0] != 0:
