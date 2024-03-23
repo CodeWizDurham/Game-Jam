@@ -137,7 +137,7 @@ def loop():
                 waiting = 1
                 
         if health <= 0:
-            return True
+            endings.loop(1)
         
         mouse = pygame.mouse.get_pos()
         mouse2 = pygame.mouse.get_pressed()
