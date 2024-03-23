@@ -60,3 +60,4 @@ def loop(ending):
             if effectSize >= 600:
                 run = False
         pygame.display.flip()
+    pygame.quit()
