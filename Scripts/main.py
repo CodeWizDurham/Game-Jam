@@ -38,6 +38,8 @@ class hotbarC:
                     rect_to_use = rect4
                 elif i + 1 == 5:
                     rect_to_use = rect5
+                pickaxeImage = pygame.image.load("Assets/pickaxe.png")
+                pickaxeImage = pygame.transform.scale(pickaxeImage, (50, 50))
                 woodImg = pygame.image.load("Assets/wood.png")
                 woodImg = pygame.transform.scale(woodImg, (50, 50))
                 if self.hotbar[i] == 1:
@@ -46,6 +48,8 @@ class hotbarC:
                 stoneImg = pygame.transform.scale(stoneImg, (50, 50))
                 if self.hotbar[i] == 2:
                     screen.blit(stoneImg, rect_to_use)
+                if self.hotbar[i] == 4:
+                    screen.blit(pickaxeImage, rect_to_use)
 
 
 hotbar = hotbarC([])
