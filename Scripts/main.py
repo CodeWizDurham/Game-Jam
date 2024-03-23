@@ -28,6 +28,8 @@ class hotbarC:
             rect3 = pygame.Rect(200 + 100, 525, 50, 50)
             rect4 = pygame.Rect(200 + 200, 525, 50, 50)
             rect5 = pygame.Rect(200 + 300, 525, 50, 50)
+            rect6 = pygame.Rect(200 + 400, 525, 50, 50)
+            rect7 = pygame.Rect(200 + 500, 525, 50, 50)
             for i in range(len(self.hotbar)):
                 rect_to_use = rect1
                 if i + 1 == 2:
@@ -38,6 +40,12 @@ class hotbarC:
                     rect_to_use = rect4
                 elif i + 1 == 5:
                     rect_to_use = rect5
+                elif i + 1 == 6:
+                    rect_to_use = rect6
+                elif i + 1 == 7:
+                    rect_to_use = rect7
+                pickaxeImage = pygame.image.load("Assets/pickaxe.png")
+                pickaxeImage = pygame.transform.scale(pickaxeImage, (50, 50))
                 woodImg = pygame.image.load("Assets/wood.png")
                 woodImg = pygame.transform.scale(woodImg, (50, 50))
                 if self.hotbar[i] == 1:
@@ -46,19 +54,19 @@ class hotbarC:
                 stoneImg = pygame.transform.scale(stoneImg, (50, 50))
                 if self.hotbar[i] == 2:
                     screen.blit(stoneImg, rect_to_use)
+                if self.hotbar[i] == 4:
+                    screen.blit(pickaxeImage, rect_to_use)
 
 
 hotbar = hotbarC([])
 clock = pygame.time.Clock()
 
 def crafting():
-    pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial")
-    sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial")
-    stick_text = PygE.Text(30, "3. Stick: 1 Wood", (450, 500), "Arial")
+    pickaxe_text = PygE.Text(30, "1. Pickaxe: 4 Wood", (450, 200), "Arial")
+    sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Wood", (450, 350), "Arial")
     screen.fill("gray")
     screen.blit(pickaxe_text.image, pickaxe_text.pos)
     screen.blit(sword_text.image, sword_text.pos)
-    screen.blit(stick_text.image, stick_text.pos)
 
     items = [0, 0, 0]
 
