@@ -112,6 +112,7 @@ def main():
         fourth_active = None
         fifth_active = None
         sixth_active = None
+        seventh_active = None
         screen.fill("gray")
         screen.blit(groundImg, (0, 0))
         PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
@@ -146,6 +147,10 @@ def main():
             if trees[4] != 0:
                 screen.blit(E_Button.image, (trees[4].x + 25, trees[4].y + 25))
                 sixth_active = True
+        if PlAYeR.rect.colliderect(trees[5]):
+            if trees[5] != 0:
+                screen.blit(E_Button.image, (trees[5].x + 25, trees[5].y + 25))
+                seventh_active = True
         
         screen.blit(door.image, door.rect.center)
         if PlAYeR.rect.colliderect(door.rect):
@@ -199,6 +204,12 @@ def main():
                 trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
                 hotbar.add_item(2)
+        if seventh_active == True:
+           if key[pygame.K_e]:
+               trees.pop(5)
+               trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
+               hit_sound.play()
+               hotbar.add_item(2)
         if fifth_active == True:
             if key[pygame.K_e]:
                 run = False
