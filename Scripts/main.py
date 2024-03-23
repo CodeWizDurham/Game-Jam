@@ -62,13 +62,11 @@ hotbar = hotbarC([])
 clock = pygame.time.Clock()
 
 def crafting():
-    pickaxe_text = PygE.Text(30, "1. Pickaxe: 3 Wood, 2 Sticks", (450, 200), "Arial")
-    sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Stick", (450, 350), "Arial")
-    stick_text = PygE.Text(30, "3. Stick: 1 Wood", (450, 500), "Arial")
+    pickaxe_text = PygE.Text(30, "1. Pickaxe: 4 Wood", (450, 200), "Arial")
+    sword_text = PygE.Text(30, "2. Sword: 2 Stone, 1 Wood", (450, 350), "Arial")
     screen.fill("gray")
     screen.blit(pickaxe_text.image, pickaxe_text.pos)
     screen.blit(sword_text.image, sword_text.pos)
-    screen.blit(stick_text.image, stick_text.pos)
 
     items = [0, 0, 0]
 
@@ -127,6 +125,7 @@ def main():
         fifth_active = None
         sixth_active = None
         seventh_active = None
+        eighth_active  = None
         screen.fill("gray")
         screen.blit(groundImg, (0, 0))
         PlAYeR = PygE.image(["Assets", "player.png"], 0, (50, 50), pygame.Rect(x - (50 / 2), y - (50 / 2), 50, 50))
@@ -167,6 +166,10 @@ def main():
             if trees[5] != 0:
                 screen.blit(E_Button.image, (trees[5].x + 25, trees[5].y + 25))
                 seventh_active = True
+        if PlAYeR.rect.colliderect(trees[6]):
+            if trees[6] != 0:
+                screen.blit(E_Button.image, (trees[6].x + 25, trees[6].y + 25))
+                eighth_active = True
         
         screen.blit(door.image, door.rect.center)
         if PlAYeR.rect.colliderect(door.rect):
@@ -217,19 +220,25 @@ def main():
                 trees.pop(3)
                 trees.insert(3, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
-                hotbar.add_item(2)
+                hotbar.add_item(1)
         if sixth_active == True:
             if key[pygame.K_e]:
                 trees.pop(4)
                 trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
-                hotbar.add_item(2)
+                hotbar.add_item(1)
         if seventh_active == True:
            if key[pygame.K_e]:
                trees.pop(5)
                trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
                hit_sound.play()
                hotbar.add_item(2)
+        if eighth_active == True:
+            if key[pygame.K_e]:
+                trees.pop(6)
+                trees.insert(5, pygame.Rect(-1000, -1000, 0, 0))
+                hit_sound.play()
+                hotbar.add_item(2)
         if fifth_active == True:
             if key[pygame.K_e]:
                 run = False
