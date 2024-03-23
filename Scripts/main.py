@@ -171,7 +171,7 @@ def main():
         if key[pygame.K_q]:
             open1 = not open1
         if key[pygame.K_LSHIFT]:
-            speed = 2
+            speed = 5
         else:
             speed = 1
         if key[pygame.K_w] and y > 0:
