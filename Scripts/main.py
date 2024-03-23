@@ -28,6 +28,8 @@ class hotbarC:
             rect3 = pygame.Rect(200 + 100, 525, 50, 50)
             rect4 = pygame.Rect(200 + 200, 525, 50, 50)
             rect5 = pygame.Rect(200 + 300, 525, 50, 50)
+            rect6 = pygame.Rect(200 + 400, 525, 50, 50)
+            rect7 = pygame.Rect(200 + 500, 525, 50, 50)
             for i in range(len(self.hotbar)):
                 rect_to_use = rect1
                 if i + 1 == 2:
@@ -38,6 +40,10 @@ class hotbarC:
                     rect_to_use = rect4
                 elif i + 1 == 5:
                     rect_to_use = rect5
+                elif i + 1 == 6:
+                    rect_to_use = rect6
+                elif i + 1 == 7:
+                    rect_to_use = rect7
                 pickaxeImage = pygame.image.load("Assets/pickaxe.png")
                 pickaxeImage = pygame.transform.scale(pickaxeImage, (50, 50))
                 woodImg = pygame.image.load("Assets/wood.png")
