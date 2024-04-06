@@ -81,8 +81,6 @@ def crafting():
                 items[1] += 1
     except:
         None
-    print(items)
-    print(len(hotbar))
     if key5[pygame.K_1]:
         if items[0] >= 4:
             hotbar.add_item(4)
@@ -105,10 +103,10 @@ def main():
     key = pygame.key.get_pressed()
     x = 450
     y = 300
-    trees = [pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 450), random.randint(0, 300), 50, 50),
-             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50),
-             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50),
-             pygame.Rect(random.randint(0, 900), random.randint(0, 600), 50, 50)]
+    trees = [pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50),
+             pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50),
+             pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50),
+             pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50)]
     groundImg = pygame.image.load("Assets/ground.png")
     groundImg = pygame.transform.scale(groundImg, (900, 600))
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
@@ -194,8 +192,16 @@ def main():
             x -= speed
         if key[pygame.K_d] and x < 900:
             x += speed
-        if key[pygame.K_s] and y < 600:
+        if key[pygame.K_s] and y < 475:
             y += speed
+        
+        yes = "no"
+        try:
+            for i in range(len(hotbar)):
+                if hotbar[i] == 4:
+                    yes = "yes"
+        except:
+            None
 
         if first_active == True:
             if key[pygame.K_e]:
@@ -227,13 +233,13 @@ def main():
                 trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
                 hotbar.add_item(1)
-        if seventh_active == True:
+        if seventh_active == True and yes == "yes":
            if key[pygame.K_e]:
                trees.pop(5)
                trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
                hit_sound.play()
                hotbar.add_item(2)
-        if eighth_active == True:
+        if eighth_active == True and yes == "yes":
             if key[pygame.K_e]:
                 trees.pop(6)
                 trees.insert(5, pygame.Rect(-1000, -1000, 0, 0))
