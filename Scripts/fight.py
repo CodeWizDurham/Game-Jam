@@ -37,7 +37,7 @@ atkSound = pygame.mixer.Sound("Assets/attack.wav")
 atkSound.set_volume(25)
 rick = pygame.mixer.Sound("Assets/rickrollremakeboot.mp3")
 mus = pygame.mixer.Sound("Assets/Captain Scurvy.mp3")
-let = pygame.mixer.Sound("Voicy_Let it Go The Remakeboot.mp3")
+let = pygame.mixer.Sound("Assets/Voicy_Let it Go The Remakeboot.mp3")
 state = 0
 enemyPos = 125
 musicOn = False
