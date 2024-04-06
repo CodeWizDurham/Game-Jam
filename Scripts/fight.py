@@ -35,6 +35,7 @@ pygame.mixer.init()
 pygame.mixer_music.load("Assets/Captain Scurvy.mp3")
 atkSound = pygame.mixer.Sound("Assets/attack.wav")
 atkSound.set_volume(25)
+rick = pygame.mixer.Sound("Assets/rickroll.mp3")
 mus = pygame.mixer.Sound("Assets/Captain Scurvy.mp3")
 state = 0
 enemyPos = 125
@@ -131,7 +132,8 @@ def loop():
                 break
             
         if plrHealth <= 0:
-            pygame.mixer_music.stop()
+            mus.stop()
+            rick.play(1)
             endings.loop(2)
         
         if state == 2:
@@ -141,6 +143,7 @@ def loop():
                 waiting = 1
                 
         if health <= 0:
+            mus.stop()
             endings.loop(1)
         
         mouse = pygame.mouse.get_pos()

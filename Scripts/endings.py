@@ -8,7 +8,7 @@ water = pygame.image.load("Assets/water.png")
 water = pygame.transform.scale(water, (400, 400))
 ship = pygame.image.load("Assets/ship.png")
 ship = pygame.transform.scale(ship, (100, 60))
-thingfromspace = pygame.image.load("Assets/blackhole.png")
+rick = pygame.image.load("Assets/rick.png")
 goblin = pygame.image.load("Assets/goblin.png")
 ground = pygame.image.load("Assets/ground.png")
 ground = pygame.transform.scale(ground, (400, 400))
@@ -30,7 +30,7 @@ def loop(ending):
     global shipX
     global effectSize
     global goblinSize
-    global thingfromspace
+    global rick
     global goblin
     #main loop
     run = True
@@ -54,7 +54,7 @@ def loop(ending):
             goblin = pygame.transform.scale(goblin, (goblinSize, goblinSize))
             if goblinSize <= 1:
                 effectSize += 10
-                thingfromspaceNew = pygame.transform.scale(thingfromspace, (effectSize, effectSize))
+                thingfromspaceNew = pygame.transform.scale(rick, (effectSize, effectSize))
                 screen.blit(thingfromspaceNew, (50 - effectSize / 4, 50 - effectSize / 4))
             elif goblinSize >= 2:
                 goblinSize -= 1
