@@ -35,8 +35,9 @@ pygame.mixer.init()
 pygame.mixer_music.load("Assets/Captain Scurvy.mp3")
 atkSound = pygame.mixer.Sound("Assets/attack.wav")
 atkSound.set_volume(25)
-rick = pygame.mixer.Sound("Assets/rickroll.mp3")
+rick = pygame.mixer.Sound("Assets/rickrollremakeboot.mp3")
 mus = pygame.mixer.Sound("Assets/Captain Scurvy.mp3")
+let = pygame.mixer.Sound("Voicy_Let it Go The Remakeboot.mp3")
 state = 0
 enemyPos = 125
 musicOn = False
@@ -148,6 +149,7 @@ def loop():
                 
         if health <= 0:
             mus.stop()
+            let.play(1)
             endings.loop(1)
         
         mouse = pygame.mouse.get_pos()
