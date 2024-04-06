@@ -61,6 +61,8 @@ def loop():
     waiting = 1
     enemyRect = enemyImg.get_rect()
     atkTime = 1
+    enemyRot = 0
+    enemyImgCopy = enemyImg
     
     #main loop
     run = True
@@ -73,7 +75,7 @@ def loop():
         
         #render sprites
         screen.blit(water, (0, 0))
-        screen.blit(enemyImg, (enemyPos, 10))
+        screen.blit(enemyImgCopy, (enemyPos, 10))
         plrHp = font.render("Your Health: " + str(plrHealth), 1, (50, 255, 50))
         screen.blit(plrHp, (200, 250))
         
@@ -89,18 +91,20 @@ def loop():
             screen.blit(attackBtn, (200, 200))
             hp = font.render("Enemy Health: " + str(health), 1, (255, 50, 50))
             screen.blit(hp, (15, 25))
+            enemyRot = 0
+            enemyImgCopy = enemyImg
         elif state == 2:
             screen.blit(plr, plrRect.center)
             attack = 1
             atkTime += 1
+            enemyRot += 5
+            enemyImgCopy = pygame.transform.rotate(enemyImg, enemyRot)
             if attack == 1 and atkTime >= 4:
                 for i in range(2):
                     tempRect = rockRect
                     tempRect.center = (random.randint(0, 250), random.randint(100, 300))
                     rocks.append(tempRect)
                     atkTime = 1
-            elif attack == 2:
-                enemyRect
         
         if state != 0:
             #music
@@ -158,5 +162,7 @@ def loop():
                         state = 2
                         health -= 50
                         enemyPos = 175
+                        plrX = 50
+                        plrY = 200
         
         pygame.display.flip()
