@@ -41,7 +41,7 @@ state = 0
 enemyPos = 125
 musicOn = False
 health = 350
-plrHealth = 15
+plrHealth = 20
 plrX = 50
 plrY = 200
 
