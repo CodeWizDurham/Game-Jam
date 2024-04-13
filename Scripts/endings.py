@@ -24,7 +24,7 @@ screen = pygame.display.set_mode((400, 300))
 pygame.display.set_caption("Shipwrecked - Ending")
 pygame.display.set_icon(ship)
 clock = pygame.time.Clock()
-pygame.mixer_music.load("Assets/rickroll.mp3")
+pygame.mixer_music.load("Assets/cursedrickroll.mp3")
 
 def loop(ending):
     global shipX
