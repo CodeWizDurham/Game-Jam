@@ -14,8 +14,9 @@ pygame.display.update()
 
 pygame.mixer.init()
 hit_sound = pygame.mixer.Sound("Assets/attack.wav")
-pygame.mixer_music.load("Assets/Moonlight Beach.mp3")
-pygame.mixer_music.play(1)
+pygame.mixer_music.load("Assets/background.mp3")
+#pygame.mixer_music.play(1)
+music = pygame.mixer.Sound("Assets/background.mp3")
 
 class hotbarC:
     def __init__(self, hotbar: list):
@@ -112,6 +113,7 @@ def main():
     door = PygE.image(["Assets", "door.png"], 0, (100, 100), pygame.Rect(800, 300, 100, 100))
     run = True
     speed = 1
+    music.play(1)
 
     while run == True:
         clock.tick(60)
