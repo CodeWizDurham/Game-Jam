@@ -72,24 +72,23 @@ def crafting():
     items = [0, 0]
 
     key5 = pygame.key.get_pressed()
-
-    try:
-        for q in range(len(hotbar)):
-            if hotbar[q] == 1:
+    hotber = hotbar.hotbar
+    if len(hotber) != 0:
+        for q in range(len(hotber)):
+            if hotber[q] == 1:
                 items[0] += 1
-            if hotbar[q] == 2:
-                items[1] += 2
-    except:
-        None
+            if hotber[q] == 2:
+                items[1] += 1
+
     if key5[pygame.K_1]:
         if items[0] >= 4:
             hotbar.add_item(4)
             for z in range(3):
-                if hotbar[len(hotbar) - 1] == 1:
-                    hotbar.pop(len(hotbar) - 1)
+                if hotber[len(hotber) - 1] == 1:
+                    hotber.pop(len(hotber) - 1)
             for x in range(2):
-                if hotbar[len(hotbar) - 1] == 3:
-                    hotbar.pop(len(hotbar) - 1)
+                if hotber[len(hotber) - 1] == 3:
+                    hotber.pop(len(hotber) - 1)
 
     for event in pygame.event.get():
         key3 = pygame.key.get_pressed()
