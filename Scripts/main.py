@@ -205,7 +205,7 @@ def main():
         yes = False
         if len(hotbar.hotbar) >= 1:
             for i in range(len(hotbar.hotbar)):
-                if hotbar[i] == 4:
+                if hotbar.hotbar[i] == 4:
                     yes = True
 
         if first_active == True:
