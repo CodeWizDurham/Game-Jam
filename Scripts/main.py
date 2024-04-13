@@ -90,11 +90,13 @@ def crafting():
     if key5[pygame.K_1]:
         if items[0] >= 4 and not pick:
             hotbar.add_item(4)
+            woodAmount = 0
+            for x in range(len(hotber)):
+                if hotber[x] == 0 and woodAmount <= 4:
+                    hotber[x].remove(hotber)
+                    woodAmount += 1
             for z in range(3):
                 if hotber[len(hotber) - 1] == 1:
-                    hotber.pop(len(hotber) - 1)
-            for x in range(2):
-                if hotber[len(hotber) - 1] == 3:
                     hotber.pop(len(hotber) - 1)
 
     for event in pygame.event.get():
