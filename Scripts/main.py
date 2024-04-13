@@ -17,6 +17,7 @@ hit_sound = pygame.mixer.Sound("Assets/attack.wav")
 pygame.mixer_music.load("Assets/background.mp3")
 #pygame.mixer_music.play(1)
 music = pygame.mixer.Sound("Assets/background.mp3")
+music.set_volume(0.01)
 
 class hotbarC:
     def __init__(self, hotbar: list):
@@ -61,6 +62,7 @@ class hotbarC:
 
 hotbar = hotbarC([])
 clock = pygame.time.Clock()
+pick = False
 
 def crafting():
     pickaxe_text = PygE.Text(30, "1. Pickaxe: 4 Wood", (450, 200), "Arial")
@@ -79,9 +81,14 @@ def crafting():
                 items[0] += 1
             if hotber[q] == 2:
                 items[1] += 1
+    
+    for i in range(len(hotber)):
+        if hotber[i] == 4:
+            global pick
+            pick = True
 
     if key5[pygame.K_1]:
-        if items[0] >= 4:
+        if items[0] >= 4 and not pick:
             hotbar.add_item(4)
             for z in range(3):
                 if hotber[len(hotber) - 1] == 1:
@@ -195,13 +202,11 @@ def main():
         if key[pygame.K_s] and y < 475:
             y += speed
         
-        yes = "no"
-        try:
-            for i in range(len(hotbar)):
+        yes = False
+        if len(hotbar.hotbar) >= 1:
+            for i in range(len(hotbar.hotbar)):
                 if hotbar[i] == 4:
-                    yes = "yes"
-        except:
-            None
+                    yes = True
 
         if first_active == True:
             if key[pygame.K_e]:
@@ -233,13 +238,13 @@ def main():
                 trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
                 hotbar.add_item(1)
-        if seventh_active == True and yes == "yes":
+        if seventh_active == True and yes == True:
            if key[pygame.K_e]:
                trees.pop(5)
                trees.insert(4, pygame.Rect(-1000, -1000, 0, 0))
                hit_sound.play()
                hotbar.add_item(2)
-        if eighth_active == True and yes == "yes":
+        if eighth_active == True and yes == True:
             if key[pygame.K_e]:
                 trees.pop(6)
                 trees.insert(5, pygame.Rect(-1000, -1000, 0, 0))
@@ -251,6 +256,7 @@ def main():
                 pygame.mixer_music.stop()
                 pygame.display.set_mode((350, 300))
                 pygame.display.set_caption("Shipwrecked - Battle")
+                music.stop()
                 fight.loop()
 
         if open1 == True:
