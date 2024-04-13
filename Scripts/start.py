@@ -26,7 +26,7 @@ def end():
     time.sleep(1)
    
 #menu 
-playing = menu.mainMenu()
+playing = menu.intro()
 if playing:
     run = True
 else:
