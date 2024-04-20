@@ -150,7 +150,7 @@ def main():
     groundImg = pygame.image.load("Assets/ground.png")
     groundImg = pygame.transform.scale(groundImg, (900, 600))
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
-    door = PygE.image(["Assets", "door.png"], 0, (100, 100), pygame.Rect(800, -100, 100, 100))
+    door = PygE.image(["Assets", "door.png"], 0, (100, 100), pygame.Rect(800, 0, 100, 100))
     run = True
     speed = 1
     music.play(1)
