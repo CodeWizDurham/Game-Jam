@@ -65,10 +65,11 @@ def loop(ending):
                 run = False
         elif ending == 3:
             screen.blit(ground, (0, 0))
-            goblin = pygame.transform.scale(goblin, (0, 0))
-            effectSize += 1
-            goblinSize = effectSize * 10
-            if effectSize >= 600:
-                run = False
+            screen.blit(goblinSecret, (200, 150))
+            pygame.display.update()
+            time.sleep(5)
+            run = False
         pygame.display.flip()
     pygame.quit()
+    
+loop(3)
