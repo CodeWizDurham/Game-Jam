@@ -12,6 +12,7 @@ rick = pygame.image.load("Assets/rick.png")
 goblin = pygame.image.load("Assets/goblin.png")
 ground = pygame.image.load("Assets/ground.png")
 ground = pygame.transform.scale(ground, (400, 400))
+goblinSecret = pygame.image.load("Assets/creepy.png")
 
 #set values
 shipX = 300
@@ -60,6 +61,13 @@ def loop(ending):
                 goblinSize -= 1
                 screen.blit(goblin, (50 - goblinSize / 4, 100 - goblinSize / 4))
                 
+            if effectSize >= 600:
+                run = False
+        elif ending == 3:
+            screen.blit(ground, (0, 0))
+            goblin = pygame.transform.scale(goblin, (goblinSize, goblinSize))
+            effectSize += 1
+            goblinSize = effectSize * 10
             if effectSize >= 600:
                 run = False
         pygame.display.flip()

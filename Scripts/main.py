@@ -119,6 +119,7 @@ def crafting():
                         hotber.pop(0)
                         stoneAmount += 1
                         iteration += 1
+            iteration = 0
             while woodAmount < 1:
                 for z in range(len(hotber)):
                     if hotber[z - iteration] == 1:

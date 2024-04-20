@@ -148,7 +148,10 @@ def loop(type):
         if plrHealth <= 0:
             mus.stop()
             rick.play(1)
-            endings.loop(2)
+            if type == 1:
+                endings.loop(2)
+            else:
+                endings.loop(3)
         
         if state == 2:
             waiting += 1
@@ -172,7 +175,10 @@ def loop(type):
                         if type == 1:
                             atkSound.play()
                         state = 2
-                        health -= 50
+                        if type == 1:
+                            health -= 50
+                        else:
+                            health -= 1
                         enemyPos = 175
                         plrX = 50
                         plrY = 200
