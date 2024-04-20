@@ -100,9 +100,10 @@ def crafting():
         if items[0] >= 4 and not pick:
             hotbar.add_item(4)
             woodAmount = 0
+            iteration = 0
             while woodAmount < 4:
-                for z in range(len(hotber)):
-                    if hotber[z - iteration] == 1:
+                for v in range(len(hotber)):
+                    if hotber[v - iteration] == 1:
                         hotber.pop(0)
                         woodAmount += 1
                         iteration += 1
