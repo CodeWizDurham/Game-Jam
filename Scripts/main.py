@@ -91,11 +91,13 @@ def crafting():
         if items[0] >= 4 and not pick:
             hotbar.add_item(4)
             woodAmount = 0
-            while woodAmount < 4:
-                print(hotber)
-                if hotber[0] == 1:
-                    hotber.pop(0)
+            for x in range(len(hotber)):
+                if hotber[x] == 0 and woodAmount <= 4:
+                    hotber[x].remove(hotber)
                     woodAmount += 1
+            for z in range(3):
+                if hotber[len(hotber) - 1] == 1:
+                    hotber.pop(len(hotber) - 1)
 
     for event in pygame.event.get():
         key3 = pygame.key.get_pressed()
@@ -203,10 +205,13 @@ def main():
             y += speed
         
         yes = False
+        yes2 = False
         if len(hotbar.hotbar) >= 1:
             for i in range(len(hotbar.hotbar)):
                 if hotbar.hotbar[i] == 4:
                     yes = True
+                if hotbar.hotbar[i] == 3:
+                    yes2 = True
 
         if first_active == True:
             if key[pygame.K_e]:
@@ -250,8 +255,8 @@ def main():
                 trees.insert(5, pygame.Rect(-1000, -1000, 0, 0))
                 hit_sound.play()
                 hotbar.add_item(2)
-        if fifth_active == True:
-            if key[pygame.K_e]:
+        if fifth_active == True and yes2 == True:
+            if key[pygame.K_e] and hotbar:
                 run = False
                 pygame.mixer_music.stop()
                 pygame.display.set_mode((350, 300))
