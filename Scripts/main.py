@@ -93,9 +93,9 @@ def crafting():
             hotbar.add_item(4)
             woodAmount = 0
             while woodAmount < 4:
-                print(hotber)
                 if hotber[0] == 1:
                     hotber.pop(0)
+                    woodAmount += 1
     if key5[pygame.K_0]:
         global creep
         creep = 2
