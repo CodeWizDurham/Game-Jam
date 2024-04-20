@@ -65,7 +65,7 @@ def loop(ending):
                 run = False
         elif ending == 3:
             screen.blit(ground, (0, 0))
-            goblin = pygame.transform.scale(goblin, (goblinSize, goblinSize))
+            goblin = pygame.transform.scale(goblin, (0, 0))
             effectSize += 1
             goblinSize = effectSize * 10
             if effectSize >= 600:

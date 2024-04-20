@@ -104,7 +104,8 @@ def crafting():
             while woodAmount < 4:
                 for v in range(len(hotber)):
                     if hotber[v - iteration] == 1:
-                        hotber.pop(0)
+                        if woodAmount < 4:
+                            hotber.pop(v - iteration)
                         woodAmount += 1
                         iteration += 1
     if key5[pygame.K_2]:
@@ -116,14 +117,14 @@ def crafting():
             while stoneAmount < 2:
                 for x in range(len(hotber)):
                     if hotber[x - iteration] == 2:
-                        hotber.pop(0)
+                        hotber.pop(x - iteration)
                         stoneAmount += 1
                         iteration += 1
             iteration = 0
             while woodAmount < 1:
                 for z in range(len(hotber)):
                     if hotber[z - iteration] == 1:
-                        hotber.pop(0)
+                        hotber.pop(z - iteration)
                         woodAmount += 1
                         iteration += 1
 

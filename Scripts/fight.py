@@ -147,8 +147,8 @@ def loop(type):
             
         if plrHealth <= 0:
             mus.stop()
-            rick.play(1)
             if type == 1:
+                rick.play(1)
                 endings.loop(2)
             else:
                 endings.loop(3)
