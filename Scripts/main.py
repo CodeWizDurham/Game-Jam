@@ -48,6 +48,8 @@ class hotbarC:
                     rect_to_use = rect7
                 pickaxeImage = pygame.image.load("Assets/pickaxe.png")
                 pickaxeImage = pygame.transform.scale(pickaxeImage, (50, 50))
+                swordImage = pygame.image.load("Assets/sword.png")
+                swordImage = pygame.transform.scale(swordImage, (50, 50))
                 woodImg = pygame.image.load("Assets/wood.png")
                 woodImg = pygame.transform.scale(woodImg, (50, 50))
                 if self.hotbar[i] == 1:
@@ -56,6 +58,8 @@ class hotbarC:
                 stoneImg = pygame.transform.scale(stoneImg, (50, 50))
                 if self.hotbar[i] == 2:
                     screen.blit(stoneImg, rect_to_use)
+                if self.hotbar[i] == 3:
+                    screen.blit(swordImage, rect_to_use)
                 if self.hotbar[i] == 4:
                     screen.blit(pickaxeImage, rect_to_use)
 
@@ -63,6 +67,7 @@ class hotbarC:
 hotbar = hotbarC([])
 clock = pygame.time.Clock()
 pick = False
+sword = False
 creep = 1
 
 def crafting():
@@ -87,15 +92,39 @@ def crafting():
         if hotber[i] == 4:
             global pick
             pick = True
+        if hotber[i] == 3:
+            global sword
+            sword = True
 
     if key5[pygame.K_1]:
         if items[0] >= 4 and not pick:
             hotbar.add_item(4)
             woodAmount = 0
             while woodAmount < 4:
-                if hotber[0] == 1:
-                    hotber.pop(0)
-                    woodAmount += 1
+                for z in range(len(hotber)):
+                    if hotber[z - iteration] == 1:
+                        hotber.pop(0)
+                        woodAmount += 1
+                        iteration += 1
+    if key5[pygame.K_2]:
+        if items[0] >= 1 and not sword and items[1] >= 2:
+            hotbar.add_item(3)
+            woodAmount = 0
+            stoneAmount = 0
+            iteration = 0
+            while stoneAmount < 2:
+                for x in range(len(hotber)):
+                    if hotber[x - iteration] == 2:
+                        hotber.pop(0)
+                        stoneAmount += 1
+                        iteration += 1
+            while woodAmount < 1:
+                for z in range(len(hotber)):
+                    if hotber[z - iteration] == 1:
+                        hotber.pop(0)
+                        woodAmount += 1
+                        iteration += 1
+
     if key5[pygame.K_0]:
         global creep
         creep = 2
