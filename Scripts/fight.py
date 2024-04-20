@@ -25,6 +25,9 @@ rockRect = rock.get_rect()
 rockRect.center = (50, 50)
 pygame.font.init()
 font = pygame.font.SysFont("Comic Sans", 15, True, False)
+bloodwater = pygame.image.load("Assets/blood.png")
+bloodwater = pygame.transform.scale(bloodwater, (400, 400))
+creepy = pygame.image.load("Assets/creepy.png")
 
 #setup
 screen = pygame.display.set_mode((350, 300))
@@ -46,7 +49,7 @@ plrHealth = 20
 plrX = 50
 plrY = 200
 
-def loop():
+def loop(type):
     global enemyPos
     global state
     global musicOn
@@ -58,12 +61,16 @@ def loop():
     global health
     
     enemyImg = goblin
+    if type == 2:
+        enemyImg = creepy
     rocks = []
     waiting = 1
     enemyRect = enemyImg.get_rect()
     atkTime = 1
     enemyRot = 0
     enemyImgCopy = enemyImg
+    if type == 2:
+        health = 1000
     
     #main loop
     run = True
@@ -76,6 +83,8 @@ def loop():
         
         #render sprites
         screen.blit(water, (0, 0))
+        if type == 2:
+            screen.blit(bloodwater, (0, 0))
         screen.blit(enemyImgCopy, (enemyPos, 10))
         plrHp = font.render("Your Health: " + str(plrHealth), 1, (50, 255, 50))
         screen.blit(plrHp, (200, 250))
@@ -109,7 +118,7 @@ def loop():
         
         if state != 0:
             #music
-            if musicOn == False:
+            if musicOn == False and type == 1:
                 mus.play(1)
                 musicOn = True
             #pygame.mixer_music.play(1)
@@ -160,7 +169,8 @@ def loop():
                 if mouse[1] >= minPos[1] and mouse[1] <= maxPos[1]:
                     if mouse2[0] and state == 1:
                         print("attack")
-                        atkSound.play()
+                        if type == 1:
+                            atkSound.play()
                         state = 2
                         health -= 50
                         enemyPos = 175

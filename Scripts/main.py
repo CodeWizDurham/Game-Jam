@@ -63,6 +63,7 @@ class hotbarC:
 hotbar = hotbarC([])
 clock = pygame.time.Clock()
 pick = False
+creep = 1
 
 def crafting():
     pickaxe_text = PygE.Text(30, "1. Pickaxe: 4 Wood", (450, 200), "Arial")
@@ -98,6 +99,9 @@ def crafting():
             for z in range(3):
                 if hotber[len(hotber) - 1] == 1:
                     hotber.pop(len(hotber) - 1)
+    if key5[pygame.K_0]:
+        global creep
+        creep = 2
 
     for event in pygame.event.get():
         key3 = pygame.key.get_pressed()
@@ -141,6 +145,9 @@ def main():
         global open1
         open1 = False
 
+        if creep == 2:
+            pygame.mixer.stop()
+        
         for i in range(0, 7, 1):
             tree = PygE.image(["Assets", "tree.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
             if i == 5 or i == 6:
@@ -262,7 +269,7 @@ def main():
                 pygame.display.set_mode((350, 300))
                 pygame.display.set_caption("Shipwrecked - Battle")
                 music.stop()
-                fight.loop()
+                fight.loop(creep)
 
         if open1 == True:
             open1 = crafting()
