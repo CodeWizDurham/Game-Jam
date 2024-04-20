@@ -111,10 +111,10 @@ def main():
     key = pygame.key.get_pressed()
     x = 450
     y = 300
-    trees = [pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50),
-             pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50),
-             pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50),
-             pygame.Rect(random.randint(0, 900), random.randint(0, 475), 50, 50)]
+    trees = [pygame.Rect(random.randint(0, 775), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 775), random.randint(0, 475), 50, 50),
+             pygame.Rect(random.randint(0, 775), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 775), random.randint(0, 475), 50, 50),
+             pygame.Rect(random.randint(0, 775), random.randint(0, 475), 50, 50), pygame.Rect(random.randint(0, 775), random.randint(0, 475), 50, 50),
+             pygame.Rect(random.randint(0, 775), random.randint(0, 475), 50, 50)]
     groundImg = pygame.image.load("Assets/ground.png")
     groundImg = pygame.transform.scale(groundImg, (900, 600))
     E_Button = PygE.image(["Assets", "E.png"], 0, (25, 25), pygame.Rect(0, 0, 25, 25))
