@@ -19,6 +19,10 @@ effect = pygame.image.load("Assets/explode.png")
 run = False
 shipX = 300
 effectSize = 5
+try:
+    cursed = file = open("Scripts/Save.txt", 'r')
+except:
+    cursed = None
 
 #end functions
 def end():
@@ -37,6 +41,9 @@ screen = pygame.display.set_mode((400, 300))
 pygame.display.set_caption("Shipwrecked - Begining")
 pygame.display.set_icon(ship)
 clock = pygame.time.Clock()
+if cursed:
+    water = pygame.image.load("Assets/blood.png")
+    water = pygame.transform.scale(water, (400, 400))
 
 #main loop
 while run:
@@ -53,6 +60,12 @@ while run:
     elif shipX <= 100:
         #end game
         screen.blit(isle, (200, 50))
+        font = pygame.font.SysFont("Sans", 20, True)
+        if not cursed:
+            text = font.render("Welcome to the island.", 1, (0, 0, 0))
+        else:
+            text = font.render("Welcome to the HELL.", 1, (255, 0, 0))
+        screen.blit(text, (0, 50))
         pygame.display.update()
         time.sleep(1)
         end()

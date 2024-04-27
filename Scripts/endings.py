@@ -1,5 +1,6 @@
 import pygame
 import time
+import os
 
 pygame.init()
 
@@ -64,6 +65,7 @@ def loop(ending):
             if effectSize >= 600:
                 run = False
         elif ending == 3:
+            file = open("Scripts/Save.txt", 'x')
             screen.blit(ground, (0, 0))
             screen.blit(goblinSecret, (100, 150))
             pygame.display.update()
