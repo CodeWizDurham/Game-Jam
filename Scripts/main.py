@@ -240,13 +240,13 @@ def main():
             speed = 5
         else:
             speed = 1
-        if key[pygame.K_w] and y > 10:
+        if key[pygame.K_w] or key[pygame.K_UP] and y > 10:
             y -= speed
-        if key[pygame.K_a] and x > 10:
+        if key[pygame.K_a] or key[pygame.K_LEFT] and x > 10:
             x -= speed
-        if key[pygame.K_d] and x < 900:
+        if key[pygame.K_d] or key[pygame.K_RIGHT] and x < 900:
             x += speed
-        if key[pygame.K_s] and y < 475:
+        if key[pygame.K_s] or key[pygame.K_DOWN] and y < 475:
             y += speed
         
         yes = False
