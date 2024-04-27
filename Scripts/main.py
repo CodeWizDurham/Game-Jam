@@ -11,6 +11,10 @@ pygame.display.set_caption("Shipwrecked - Game Jam")
 ship = pygame.image.load("Assets/ship.png")
 pygame.display.set_icon(ship)
 pygame.display.update()
+try:
+    cursed = file = open("Scripts/Save.txt", 'r')
+except:
+    cursed = None
 
 pygame.mixer.init()
 hit_sound = pygame.mixer.Sound("Assets/attack.wav")
@@ -155,6 +159,11 @@ def main():
     run = True
     speed = 1
     music.play(1)
+    treeimg = "tree.png"
+    if cursed:
+        groundImg = pygame.image.load("Assets/notgrass.png")
+        groundImg = pygame.transform.scale(groundImg, (900, 600))
+        treeimg = "nottree.png"
 
     while run == True:
         clock.tick(60)
@@ -178,7 +187,7 @@ def main():
             pygame.mixer.stop()
         
         for i in range(0, 7, 1):
-            tree = PygE.image(["Assets", "tree.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
+            tree = PygE.image(["Assets", treeimg], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
             if i == 5 or i == 6:
                 stone = PygE.image(["Assets", "cave.png"], 0, (75, 75), pygame.Rect(trees[i].x, trees[i].y, 75, 75))
                 screen.blit(stone.image, (trees[i].x, trees[i].y))
