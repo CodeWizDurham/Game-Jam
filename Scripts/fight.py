@@ -74,6 +74,7 @@ def loop(type):
     
     #main loop
     run = True
+    mew = False
     while run:
         clock.tick(30)
         
@@ -134,6 +135,10 @@ def loop(type):
             plrX -= speed
         if keys[pygame.K_d]:
             plrX += speed
+        if keys[pygame.K_m]:
+            if type == 2:
+                mew = True
+                health = 0
         plrRect.center = (plrX, plrY)
         
         #rocks
@@ -162,7 +167,10 @@ def loop(type):
         if health <= 0:
             mus.stop()
             let.play(1)
-            endings.loop(1)
+            if type == 1:
+                endings.loop(1)
+            else:
+                endings.loop(4)
         
         mouse = pygame.mouse.get_pos()
         mouse2 = pygame.mouse.get_pressed()
