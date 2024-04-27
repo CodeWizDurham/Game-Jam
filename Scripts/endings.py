@@ -14,6 +14,9 @@ goblin = pygame.image.load("Assets/goblin.png")
 ground = pygame.image.load("Assets/ground.png")
 ground = pygame.transform.scale(ground, (400, 400))
 goblinSecret = pygame.image.load("Assets/creepy.png")
+spikes = pygame.image.load("Assets/spikes.png")
+player = pygame.image.load("Assets/player.png")
+player = pygame.transform.scale(player, (75, 75))
 
 #set values
 shipX = 300
@@ -65,9 +68,14 @@ def loop(ending):
             if effectSize >= 600:
                 run = False
         elif ending == 3:
-            file = open("Scripts/Save.txt", 'x')
+            try:
+                file = open("Scripts/Save.txt", 'r')
+            except:
+                file = open("Scripts/Save.txt", 'x')
             screen.blit(ground, (0, 0))
-            screen.blit(goblinSecret, (100, 150))
+            screen.blit(goblinSecret, (50, 50))
+            screen.blit(spikes, (100, 0))
+            screen.blit(player, (200, 150))
             pygame.display.update()
             time.sleep(5)
             run = False
