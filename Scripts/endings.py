@@ -7,6 +7,8 @@ pygame.init()
 #load images
 water = pygame.image.load("Assets/water.png")
 water = pygame.transform.scale(water, (400, 400))
+bloodwater = pygame.image.load("Assets/blood.png")
+bloodwater = pygame.transform.scale(bloodwater, (400, 400))
 ship = pygame.image.load("Assets/ship.png")
 ship = pygame.transform.scale(ship, (100, 60))
 rick = pygame.image.load("Assets/rick.png")
@@ -81,6 +83,7 @@ def loop(ending):
             time.sleep(5)
             run = False
         elif ending == 4:
+            screen.blit(bloodwater, (0, 0))
             screen.blit(mewing, (150, 100))
             font = pygame.font.SysFont("Sans", 20, True)
             text = font.render("Mewing", 1, (0, 255, 0))
